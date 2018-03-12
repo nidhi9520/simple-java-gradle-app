@@ -1,19 +1,19 @@
 pipeline {
     agent {
         docker {
-            image 'gradle:3-alpine'
+            image 'gradle:4.6'
             args '-v /root/.m2:/root/.m2'
         }
     }
     stages {
         stage('Build') {
             steps {
-                sh './gradlew clean build'
+                sh 'gradle build'
             }
         }
         stage('Test') { 
             steps {
-                sh './gradlew test' 
+                sh 'gradle test' 
             }
             post {
                 always {
